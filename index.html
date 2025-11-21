@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Links</title>
+    <style>
+        body {
+            font-family: "Poppins", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .light-mode {
+            background-color: #FFE4F1; /* Soft Pink Background */
+            color: #333;
+        }
+        .dark-mode {
+            background-color: #2b2b2b;
+            color: #fff;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 380px;
+            padding: 20px;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .bio {
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 15px;
+            background-color: #FF69B4; /* Pink Button */
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            box-shadow: 0px 4px 10px rgba(255, 105, 180, 0.4);
+            transition: 0.25s ease-in-out;
+            animation: fadeIn 0.5s ease-in-out;
+            animation-fill-mode: both;
+        }
+
+        .link:nth-child(1) { animation-delay: 0.1s; }
+        .link:nth-child(2) { animation-delay: 0.2s; }
+        .link:nth-child(3) { animation-delay: 0.3s; }
+
+        .link:hover {
+            background-color: #ff2d92;
+            transform: translateY(-3px);
+            box-shadow: 0px 6px 12px rgba(255, 20, 147, 0.5);
+        }
+
+        .link:active {
+            transform: scale(0.95);
+        }
+
+        .link img {
+            width: 28px;
+        }
+
+        .dark-mode .link {
+            background-color: #ff5fa6;
+            color: #fff;
+        }
+        .dark-mode .link:hover {
+            background-color: #ff3a9d;
+        }
+
+        .toggles {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            padding: 6px 12px;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            background-color: #ffffffaa;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #ffe0ef;
+        }
+
+        .dark-mode button {
+            background-color: #444;
+            color: #fff;
+        }
+
+        .dark-mode button:hover {
+            background-color: #666;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+    </style>
+</head>
+<body class="light-mode">
+    <div class="toggles">
+        <button id="lang-toggle">EN</button>
+        <button id="theme-toggle">🌙</button>
+    </div>
+
+    <div class="container">
+        <h1 id="title">punya caca</h1>
+        <p class="bio" id="bio">yang buat kesayangan caca.</p>
+
+        <div class="links">
+            <a href="https://www.instagram.com/piupiapiuaa?igsh=bzd6Njlvem45ZjIy" class="link" target="_blank">
+                <img src="instagram.png" alt="Instagram Icon">
+                <span id="instagram-text">Instagram</span>
+            </a>
+            <a href="https://www.tiktok.com/@apipiuyy?_r=1&_t=ZS-91amwhsq24d" class="link" target="_blank">
+                <img src="tikitoko.png" alt="TikTok Icon">
+                <span id="tiktok-text">TikTok</span>
+            </a>
+            <a href="https://x.com/apipiuyyy?t=jGMvbidP2gQuai9CEmOXhA&s=09" class="link" target="_blank">
+                <img src="X.png" alt="X Icon">
+                <span id="twitter-text">Twitter/X</span>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const langToggle = document.getElementById('lang-toggle');
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        const title = document.getElementById('title');
+        const bio = document.getElementById('bio');
+        const instagramText = document.getElementById('instagram-text');
+        const tiktokText = document.getElementById('tiktok-text');
+        const twitterText = document.getElementById('twitter-text');
+
+        let isEnglish = true;
+        let isDark = false;
+
+        langToggle.addEventListener('click', () => {
+            isEnglish = !isEnglish;
+            langToggle.textContent = isEnglish ? 'EN' : 'ID';
+            title.textContent = isEnglish ? 'have caca' : 'punya caca';
+            bio.textContent = isEnglish ? 'which is made for caca darling.' : 'yang buat kesayangan caca.';
+        });
+
+        themeToggle.addEventListener('click', () => {
+            isDark = !isDark;
+            body.className = isDark ? 'dark-mode' : 'light-mode';
+            themeToggle.textContent = isDark ? '☀️' : '🌙';
+        });
+    </script>
+</body>
+</html>
